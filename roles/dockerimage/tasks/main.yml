@@ -1,0 +1,15 @@
+- name: Install pip
+  apt: 
+    name=python3-pip
+    state=present
+- name: install docker-py package
+  pip: name=docker-py
+- name: deploy_code
+  copy:
+     src: /home/docker/ansible/docker/Dockerfile
+     dest: /home/node/
+- name: Build Docker image from Dockerfile
+  docker_image:
+    name: web
+    path: /home/node/
+    state: build

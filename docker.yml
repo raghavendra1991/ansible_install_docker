@@ -1,0 +1,10 @@
+--- 
+- hosts: docker
+  remote_user: node
+  connection: ssh
+  gather_facts: yes
+  become: true
+
+  roles:
+#  - docker
+   - dockerimage
